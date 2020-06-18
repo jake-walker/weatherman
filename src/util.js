@@ -6,41 +6,16 @@ module.exports = {
      * @returns {String} The compass direction.
      */
     degreesToCardinal(d) {
-        d = d % 360;
-
-        if (11.25 <= d && d <= 33.75) {
-            return "NNE";
-        } else if (33.75 <= d && d < 56.25) {
-            return "NE";
-        } else if (56.25 <= d && d < 78.75) {
-            return "ENE";
-        } else if (78.75 <= d && d < 101.25) {
-            return "E";
-        } else if (101.25 <= d && d < 123.75) {
-            return "ESE";
-        } else if (123.75 <= d && d < 146.25) {
-            return "SE";
-        } else if (146.25 <= d && d < 168.75) {
-            return "SSE";
-        } else if (168.75 <= d && d < 191.25) {
-            return "S";
-        } else if (191.25 <= d && d < 213.75) {
-            return "SSW";
-        } else if (213.75 <= d && d < 236.25) {
-            return "SW";
-        } else if (236.25 <= d && d < 258.75) {
-            return "WSW";
-        } else if (258.75 <= d && d < 281.25) {
-            return "W";
-        } else if (281.25 <= d && d < 303.75) {
-            return "WNW";
-        } else if (303.75 <= d && d < 326.25) {
-            return "NW";
-        } else if (326.25 <= d && d < 348.75) {
-            return "NNW";
-        } else {
-            return "N";
-        }
+        const degreePerDirection = 360 / 8;
+        const offsetAngle = d + degreePerDirection / 2;
+        return (offsetAngle >= 0 * degreePerDirection && offsetAngle < 1 * degreePerDirection) ? "North"
+            : (offsetAngle >= 1 * degreePerDirection && offsetAngle < 2 * degreePerDirection) ? "North East"
+                : (offsetAngle >= 2 * degreePerDirection && offsetAngle < 3 * degreePerDirection) ? "East"
+                    : (offsetAngle >= 3 * degreePerDirection && offsetAngle < 4 * degreePerDirection) ? "South East"
+                        : (offsetAngle >= 4 * degreePerDirection && offsetAngle < 5 * degreePerDirection) ? "South"
+                            : (offsetAngle >= 5 * degreePerDirection && offsetAngle < 6 * degreePerDirection) ? "South West"
+                                : (offsetAngle >= 6 * degreePerDirection && offsetAngle < 7 * degreePerDirection) ? "West"
+                                    : "North West";
     },
     /**
      * Convert a wind speed to a numerical beaufort scale value.

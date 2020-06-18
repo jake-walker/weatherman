@@ -27,15 +27,15 @@ export default new Vuex.Store({
     mutations: {
         UPDATE_LATEST(state, data) {
             console.log("Updating latest data", data);
-            state.latest.humidity = data.humidity || null;
-            state.latest.temperatureIn = data.indoor_temperature_c || null;
-            state.latest.temperatureOut = data.outdoor_temperature_c || null;
-            state.latest.pressure = (data.pressure / 100.0) || null;
-            state.latest.rain = data.rain_mm || null;
-            state.latest.date = new Date(data.timestamp) || null;
-            state.latest.averageWindSpeed = data.wind_avg_ms || null;
-            state.latest.windDirection = data.wind_dir_deg || null;
-            state.latest.maxWindSpeed = data.wind_max_ms || null;
+            state.latest.humidity = data.humidity;
+            state.latest.temperatureIn = data.indoor_temperature_c;
+            state.latest.temperatureOut = data.outdoor_temperature_c;
+            state.latest.pressure = (data.pressure / 100.0);
+            state.latest.rain = data.rain_mm;
+            state.latest.date = new Date(data.timestamp);
+            state.latest.averageWindSpeed = data.wind_avg_ms;
+            state.latest.windDirection = data.wind_dir_deg;
+            state.latest.maxWindSpeed = data.wind_max_ms;
         }
     },
     actions: {
